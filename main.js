@@ -1,5 +1,5 @@
 import './style.scss'
-import './newstylesheet.css'
+
 
 document.querySelector('#app').innerHTML = `
   <h1>Hello Vite! there..dsdsdsdsds.</h1>
