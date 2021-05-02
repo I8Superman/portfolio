@@ -1,0 +1,54 @@
+body {
+    background-color     : rgb(223, 21, 21);
+    background-image     : url(code_background.jpg);
+    background-blend-mode: multiply;
+    background-size      : cover;
+}
+
+main {
+    height         : 100vh;
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    position       : relative;
+}
+
+#field {
+    /* border         : 1px solid black; */
+    width          : 50vw;
+    height         : 50vw;
+    perspective    : 100vw;
+    position       : relative;
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    transform-style: preserve-3d;
+}
+
+.logo {
+    position                 : absolute;
+    width                    : 15vw;
+    height                   : 15vw;
+    font-size                : 10px;
+    opacity                  : 1;
+    background-size          : contain;
+    background-repeat        : no-repeat;
+    /* transform             : translateZ(100px); */
+    /* transform-origin      : 50% 50% -80px; */
+    /* border-radius         : 50%; */
+}
+
+
+.js {
+    border-radius: 15%;
+}
+
+h1 {
+    position   : absolute;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size  : 12vw;
+    line-height: 10vw;
+    color      : rgb(133, 16, 16);
+
+    mix-blend-mode: difference;
+}

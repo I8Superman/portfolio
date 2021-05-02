@@ -7,7 +7,7 @@ module.exports = { // Used when having more than one html page
         rollupOptions: {
             input: {
                 main: resolve(__dirname, 'index.html'),
-                extra: resolve(__dirname, 'extra.html') // Syntax for adding extra pages
+                //extra: resolve(__dirname, 'extra.html') // Syntax for adding extra pages
             }
         }
     }
