@@ -1,0 +1,248 @@
+@use '../base/'as b;
+@use '../components'as c;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin               : 0px;
+  background-image     : URL("../img/background.png");
+  background-position  : top;
+  background-repeat    : no-repeat;
+  background-attachment: fixed;
+  background-size      : cover;
+  overflow             : hidden;
+  transition           : all 1s;
+}
+
+main {
+  width          : 100vw;
+  height         : 100vh;
+  position       : relative;
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+}
+
+.main-button {
+  width             : 20vw;
+  height            : 7vh;
+  font-size         : 1rem;
+  display           : block;
+  border-radius     : 40px;
+  //padding         : 1.9rem 2.5rem;
+  line-height       : 110%;
+  letter-spacing    : 0.1em;
+  text-transform    : uppercase;
+  position          : absolute;
+  left              : 40vw;
+  top               : 60vh;
+  color             : b.$primary-color;
+  border            : 1px solid b.$primary-color;
+  background-color  : b.$transparent;
+}
+
+.main-button:hover {
+  color           : b.$bg-color;
+  border          : 1px solid b.$primary-color;
+  background-color: b.$primary-color;
+  cursor          : pointer; //make into var
+  transition      : all 0.3s ease-in;
+}
+
+// .main-button:focus {
+//   color : b.$primary-color;
+//   border: 1px solid b.$primary-color;
+// }
+
+h1,
+h5,
+p,
+h4 {
+  line-height: 1.25;
+  color      : b.$font-color;
+}
+
+span,
+h4 {
+  font-family: b.$copy;
+}
+
+h1,
+h5 {
+  font-family: b.$headline;
+}
+
+h5 {
+  text-transform: uppercase;
+}
+
+p,
+label {
+  font-family: b.$copy;
+}
+
+#hoursplayed-id,
+#sleepinghours-id {
+  line-height: 1.25;
+  color      : b.$font-color;
+  font-family: b.$copy;
+  padding-top: 0.5em;
+}
+
+.form-group>label[for="hoursplayed"],
+.form-group>label[for="sleepinghours"],
+.form-group>label[for="nutrition"],
+.form-group>label[for="fitness"] {
+  text-transform: uppercase;
+  font-family   : b.$headline;
+  line-height   : 2rem;
+  color         : b.$font-color;
+  font-size     : 0.83em;
+  padding-left  : 0;
+}
+
+.close {
+  display        : flex;
+  justify-content: flex-end;
+  margin-left    : 32px;
+  margin-right   : 32px;
+}
+
+.close svg {
+  transition: all 0.3s;
+}
+
+.close svg:hover {
+  cursor           : pointer;
+  transform        : scale(1.2);
+  -webkit-transform: scale(1.2);
+  -moz-transform   : scale(1.2);
+  -ms-transform    : scale(1.2);
+  -o-transform     : scale(1.2);
+}
+
+button:hover,
+input:hover {
+  cursor: pointer;
+}
+
+//Progress Bar
+//----------------
+
+#progress-bar {
+  width           : 92%;
+  height          : 0.3rem;
+  background-color: b.$coral-light;
+  border-radius   : 5px;
+  position        : relative;
+  margin          : auto;
+  margin-top      : 1em;
+}
+
+#progress-bar-inner {
+  height       : 100%;
+  position     : absolute;
+  left         : 0;
+  top          : 0;
+  border-radius: 5px;
+  transition   : width 0.8s ease-out;
+  background   : linear-gradient(to right, b.$coral-mid, b.$purple);
+}
+
+//this is fielset wrapper
+.slider {
+  display   : flex;
+  overflow  : hidden;
+  transition: transform 0.25s ease-out;
+}
+
+//we need sections to control sliding
+section {
+  padding           : 2rem;
+  display           : flex;
+  flex-direction    : column;
+  justify-content   : space-between;
+  flex              : 0 0 50rem;
+  transition        : transform 0.8s ease-out;
+  -webkit-transition: transform 0.8s ease-out;
+  -moz-transition   : transform 0.8s ease-out;
+  -ms-transition    : transform 0.8s ease-out;
+  -o-transition     : transform 0.8s ease-out;
+}
+
+.hide {
+  display: none;
+}
+
+.expand {
+  transition        : transform 0.7s ease-in-out 0.3s, opacity 1s;
+  transform         : translateY(80px);
+  opacity           : 1;
+  transition        : transform 0.7s ease-in-out 0.3s, opacity 0s;
+  -webkit-transition: transform 0.7s ease-in-out 0.3s, opacity 0s;
+  -moz-transition   : transform 0.7s ease-in-out 0.3s, opacity 0s;
+  -ms-transition    : transform 0.7s ease-in-out 0.3s, opacity 0s;
+  -o-transition     : transform 0.7s ease-in-out 0.3s, opacity 0s;
+  -webkit-transform : translateY(80px);
+  -moz-transform    : translateY(80px);
+  -ms-transform     : translateY(80px);
+  -o-transform      : translateY(80px);
+}
+
+.closeX {
+  transform        : translateY(150%);
+  opacity          : 1;
+  transition       : transform 0.7s ease-in-out 0.3s, opacity 0s;
+  -webkit-transform: translateY(150%);
+  -moz-transform   : translateY(150%);
+  -ms-transform    : translateY(150%);
+  -o-transform     : translateY(150%);
+}
+
+#submitted h1 {
+  font-size     : 3rem;
+  text-transform: capitalize;
+  text-align    : center;
+  color         : b.$coral-mid;
+}
+
+#submitted h4 {
+  text-align: center;
+  margin    : auto;
+}
+
+@media (max-width: 480px) {
+  body {
+    overflow-y: scroll;
+  }
+
+  form {
+    max-width: 360px;
+  }
+
+  h1,
+  h5,
+  p,
+  h4 {
+    line-height: 0.9;
+    font-size  : 1rem;
+  }
+
+  .append-areas,
+  .append-genres,
+  .append-games {
+    display              : grid;
+    grid-template-columns: 170px 170px;
+    column-gap           : 0rem;
+  }
+
+  section {
+    padding: 1rem;
+  }
+
+  .main-button {
+    height: 15vw;
+  }
+}

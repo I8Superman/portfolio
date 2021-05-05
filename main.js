@@ -1,14 +1,16 @@
+"use strict"
+
 import './sass/style.scss'
 
-"run strict"
 
 console.log('Js runninz');
+gsap.registerPlugin(ScrollTrigger);
 
 // const field = document.querySelector('#field');
 // console.log(field);
 // const box1 = document.querySelector('.box1');
 
-// gsap.set(field, { perspective: 100 });
+// gsap.set(field, { perspective: 200 });
 
 
 // const zOffset = "-" + Math.floor(window.innerWidth / 3) + "vw";
@@ -51,18 +53,17 @@ function logoPath(logo) { // Set randomized timeline for each logo
   console.log(logo)
   const tool = logo.dataset.name;
   logo.style.backgroundImage = `url(${tool}_logo.svg)`;
-  console.log(tool);
-  const zOffsetModifier = (Math.random() * (3.5 - 2.5) + 2.5).toFixed(2); // Variable rotation radius
+
+  const zOffsetModifier = (Math.random() * (3.5 - 1.5) + 1.5).toFixed(2); // Variable rotation radius
   appValues[logo.dataset.name].zMod = zOffsetModifier; // Update appValues object for later use
-  const zOffset = "-" + Math.floor(window.innerWidth / zOffsetModifier) + "vw"; // Adjust radius according to screen width
-  console.log(zOffsetModifier, zOffset);
+  const zOffset = "-" + Math.floor(window.innerWidth / zOffsetModifier) + "px"; // Adjust radius according to screen width
+  console.log(zOffset);
   const xDir = Math.random() < 0.5 ? 'left' : 'right'; // Clockwise or anti clockwise y-axis rotation
   const yDir = Math.random() < 0.5 ? 'up' : 'down'; // y translate up/down or down/up
-  console.log(xDir, yDir)
   const yTransform = Math.floor(Math.random() * (20 - 2) + 2); // Degree of y-translate
   // Adjust z-axis rotation according to y rotation and y translate
   const angle = xDir === 'left' && yDir === 'down' || xDir === 'right' && yDir === 'up' ? -(yTransform * 2) : yTransform * 2;
-  console.log(angle)
+
   const yFirst = yDir === 'up' ? `-${yTransform}vw` : `${yTransform}vw`; // Set 1st y translate according to yDir
   const ySecond = yDir === 'up' ? `${yTransform}vw` : `-${yTransform}vw`;
   const rotateDir = xDir === 'left' ? -360 : 360; // Replace left and right with number values
@@ -82,7 +83,7 @@ window.addEventListener('resize', resetZOffset);
 
 function resetZOffset() {
   const zOffsetNew = "-" + Math.floor(window.innerWidth / 3) + "vw";
-  console.log(`New calculation: ${zOffsetNew}`)
+  //console.log(`New calculation: ${zOffsetNew}`)
 }
 
 
@@ -102,6 +103,51 @@ window.animate = () => {
   logoMaster.timeScale(0.5);
 }
 
+// Animate project image and text:
+
+document.addEventListener('DOMContentLoaded', () => {
+  const fadeInObjs = gsap.utils.toArray('.fade_in');
+  fadeInObjs.forEach((obj) => {
+    const parentElem = obj.parentNode;
+    console.log(parentElem)
+    const fadeInDir = obj.className.includes('text') ? '-200' : '200';
+    const fadeOutDir = obj.className.includes('text') ? '200' : '-200';
+    gsap.set('.project', { perspective: 500 });
+    gsap.set(obj, { transformOrigin: 'center center -150px', opacity: 0 });
+    const fadeAnim = gsap.timeline();
+    fadeAnim.fromTo(obj, { rotationX: fadeInDir, scale: 0.4 }, { ease: 'power1.out', duration: 1, rotationX: 0, scale: 1 }),
+      fadeAnim.fromTo(obj, {}, { duration: 0.5, opacity: 1 }, 0.5),
+      fadeAnim.fromTo(obj, { rotationX: 0, scale: 1 }, { ease: 'power1.in', duration: 1, rotationX: fadeOutDir, scale: 0.4 }),
+      fadeAnim.fromTo(obj, {}, { duration: 0.5, opacity: 0 }, 1.2);
+    ScrollTrigger.create({
+      trigger: parentElem,
+      start: 'top bottom',
+      //markers: true,
+      scrub: true,
+      animation: fadeAnim,
+      toggleActions: 'restart complete reverse none'
+    });
+  });
+});
+
+// window.animateProject = () => {
+//   let prAnim = gsap.timeline({ ease: "power1.out" });
+//   prAnim.from('.anim_left', { stagger: 0.1, duration: 1, rotation: 360, opacity: 0, x: '20vw', scale: 0.4 })
+//   prAnim.from('.anim_right', { stagger: 0.1, duration: 1, rotation: 360, opacity: 0, x: '-20vw', scale: 0.4 }, 0);
+// }
+
+
+// const prAnim = gsap.from('.anim_left', { duration: 2, rotation: 360, opacity: 0, y: '20vw', scale: 0.4 });
+
+// ScrollTrigger.create({
+//   trigger: '.pr1',
+//   animation: prAnim,
+//   toggleActions: "restart none none none",
+//   //toggleClass: { targets: [".left", ".right"], className: "hide" }
+// });
+
+// const prNum = prj.className.slice(-1);
+//     const prElem = `pr${prNum}`;
 
 
 //         gsap.set(box1, { rotation: 20 });

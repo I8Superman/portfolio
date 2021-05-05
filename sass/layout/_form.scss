@@ -1,0 +1,327 @@
+@use '../base/'as b;
+@use '../components'as c;
+
+//Form Style General
+//------------------------------
+form {
+  all: initial;
+  min-height: 85vh;
+  max-width: 800px;
+  padding: 15px 25px;
+  background: b.$bg-color;
+  border-radius: 40px;
+  -webkit-border-radius: 40px;
+  border: 1px solid b.$coral-mid;
+
+  // @media (max-width: 480px) {
+  //   form {
+  //     max-width: 350px;
+  //   }
+  // }
+
+  fieldset {
+    all: initial;
+    text-align: start;
+  }
+
+  .form-group {
+    display: grid;
+    gap: 0px;
+    padding-top: 1em;
+    // line-height: 2em;
+  }
+
+  .form-group input {
+    margin: 0px;
+    margin-top: 3px;
+  }
+
+  label {
+    color: b.$font-color;
+    font-size: 1rem;
+    margin-inline-start: -0.4rem;
+    padding-left: 15px;
+  }
+
+  input,
+  select option {
+    padding: 10px;
+    border-radius: 4px;
+  }
+
+  input:hover,
+  select option:hover {
+    cursor: pointer;
+  }
+}
+
+#fitness {
+  margin-bottom: 2rem;
+}
+
+// Checkboxes
+// -----------------
+
+.append-areas,
+.append-genres,
+.append-games {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 3rem;
+}
+
+//Form Validation
+.error,
+.required {
+  color: b.$coral-dark;
+  display: none;
+  margin-top: 25px;
+}
+
+input[required]:invalid:focus-within ~ .required {
+  display: block;
+}
+
+//Input type TEXT
+input:is([type="text"], [type="email"], [type="date"], [type="password"]) {
+  -webkit-appearance: none;
+  border: 1px b.$coral-mid solid;
+  background-color: b.$bg-color;
+  color: b.$coral-mid;
+  fill: b.$coral-mid;
+  border-radius: 12px;
+}
+
+input:is([type="text"], [type="email"], [type="date"], [type="password"])::placeholder {
+  color: b.$tint;
+}
+
+input[type="date"] {
+  font-family: b.$copy;
+}
+
+//THIS IS ADDED
+
+input:focus {
+  outline: 0;
+  box-shadow: 0px 0px 0px 1px b.$coral-light;
+}
+
+//Input valid
+input:required:valid {
+  border-color: b.$green-dark;
+  color: b.$green-dark;
+}
+
+//Input Invalid
+input:invalid {
+  box-shadow: 0 0 2px 1.5px b.$coral-dark;
+}
+
+// input:focus:invalid {
+//   box-shadow: none;
+// }
+
+//Chekboxes & radios
+input[type="radio"],
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  width: 1rem;
+  height: 1rem;
+  box-shadow: none;
+  border: 1px b.$coral-mid solid;
+  padding: 0;
+  margin-right: 7px;
+  display: inline-block;
+}
+
+input[type="radio"] {
+  border-radius: 50%;
+}
+
+.center_label {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  margin-bottom: 0.5em;
+  align-items: center;
+}
+
+input:is([type="checkbox"], [type="radio"]):checked {
+  border: 1px solid b.$green-dark;
+  background: b.$green-dark;
+}
+
+input:is([type="checkbox"], [type="radio"]):focus {
+  box-shadow: 0px 0px 0px 1px b.$coral-light;
+}
+
+input[name="handles"] {
+  box-shadow: none;
+}
+
+//Range
+input[type="range"] {
+  background-color: b.$bg-color;
+}
+
+input[type="range"]:valid {
+  box-shadow: none;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 5px;
+  outline: none !important;
+  appearance: none;
+  border: 1px solid b.$coral-mid;
+  border-radius: 30px;
+}
+
+input[type="range"]::-moz-focus-outer {
+  border: 0;
+}
+
+input[type="range"]:hover {
+  outline: none;
+}
+
+/* Chrome */
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border: 1px solid b.$green-dark;
+  cursor: pointer;
+  border-radius: 30px;
+  outline: none;
+  margin-bottom: 22px;
+}
+
+input[type="range"]::-webkit-slider-thumb:active {
+  background-color: b.$green-dark;
+}
+
+/* Moz */
+
+input[type="range"]::-moz-range-thumb {
+  // width: 18px;
+  // height: 18px;
+  background: b.$green-dark;
+  cursor: pointer;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+}
+
+input[type="range"]::-moz-range-progress {
+  background-color: #fff;
+  height: 100%;
+  border-radius: 30px;
+  border: none;
+}
+
+input[type="range"]::-moz-range-track {
+  background-color: #ccc;
+  border-radius: 30px;
+  border: none;
+  height: 100%;
+}
+
+// minor styling
+
+.close {
+  color: b.$coral-mid;
+}
+
+#validation-error {
+  margin-bottom: 1rem;
+}
+
+//handles
+
+.handle {
+  border: 1px solid b.$coral-mid;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 50%;
+  margin: 0.5em;
+}
+
+.handle > input {
+  border: none;
+  width: 75%;
+}
+.handle > label {
+  width: 60px;
+  height: 50px;
+  border-right: 1px solid b.$coral-mid;
+}
+
+//ICONS FOR HANDLES
+
+label[for="twitch"] {
+  background: url("../img/twitch.svg");
+  background-size: 2rem;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: center;
+}
+label[for="steam"] {
+  background: url("../img/steam.svg");
+  background-size: 2rem;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+label[for="xbox"] {
+  background: url("../img/xbox.svg");
+  background-size: 2rem;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+label[for="blizzard"] {
+  background: url("../img/battlenet.svg");
+  background-size: 2rem;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+label[for="discord"] {
+  background: url("../img/discord.svg");
+  background-size: 2rem;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+//Styling Options
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  border: 1px solid b.$coral-mid;
+  border-radius: 12px;
+  background-color: b.$bg-color;
+  color: b.$coral-mid;
+  padding: 10px;
+  background: url(../img/Arrow-down.svg) no-repeat right;
+  background-size: 3em;
+}
+
+option {
+  background-color: white;
+}
+
+//Form Pills
+
+.pills {
+  margin-top: -12%;
+}
+#submit-pills {
+  transform-origin: center center;
+  max-width: 100%;
+}
