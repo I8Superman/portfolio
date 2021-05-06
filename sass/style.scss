@@ -1,3 +1,14 @@
+$blue  : #0029fd;
+$yellow: #ffff05;
+$purple: #9007f0;
+
+$bg_col1: #9007f0;
+$bg_col2: #ffff05;
+$bg_col3: #0029fd;
+$bg_dark: #000521;
+
+
+
 *,
 ::after,
 ::before {
@@ -34,16 +45,17 @@ main {
     background-position  : center center;
     height               : 100%;
     width                : 100%;
-    background-color     : rgb(0, 41, 253);
+    background-blend-mode: multiply;
 }
 
 .bg_top {
-    background-image     : url(../public/img/code_background.jpg);
-    display              : flex;
-    justify-content      : center;
-    align-items          : center;
-    position             : relative;
-    background-blend-mode: multiply;
+    background-image : url(../public/img/code_background.jpg);
+    display          : flex;
+    justify-content  : center;
+    align-items      : center;
+    position         : relative;
+    scroll-snap-align: center;
+    background-color : #0029fd;
 }
 
 .project {
@@ -55,11 +67,12 @@ main {
     gap                  : $gap;
     grid-template-columns: repeat(auto-fit, minmax(clamp(50%, 500px, 100%), 1fr));
     grid-template-rows   : auto;
+    background-color     : $bg_dark;
 }
 
 .left,
 .right {
-    border         : 1px red solid;
+    //border         : 1px red solid;
     display        : flex;
     justify-content: center;
     align-items    : center;
@@ -98,11 +111,13 @@ main {
 
 
 .pr1 {
-    background-image: url(../public/img/background_modes_large.jpg);
+    background-image     : url(../public/img/background_modes_large.jpg);
+    background-blend-mode: multiply;
 }
 
 .pr2 {
-    background-image: url(../public/img/audition.png);
+    background-image     : url(../public/img/audition.png);
+    background-blend-mode: multiply;
 }
 
 #field {
@@ -148,7 +163,7 @@ h1 {
     -webkit-text-fill-color: transparent;
     -moz-background-clip   : text;
     -moz-text-fill-color   : transparent;
-    z-index                : 999;
+    z-index                : 1;
 
 }
 
