@@ -18,6 +18,13 @@ gsap.registerPlugin(ScrollTrigger);
 
 // gsap.set(box1, { transformOrigin: `center center ${zOffset}` }); // Set z value relative to screen width: window width (px) / 3 > value in
 
+// Testing background img change animation
+
+window.bgchange = () => {
+  const bg = document.querySelector('main');
+  bg.style.backgroundImage = 'url(../public/img/background_modes_large.jpg)';
+  bg.style.backgroundColor = 'red';
+}
 
 
 // LOGO ANIMATIONS
@@ -105,63 +112,61 @@ window.animate = () => {
 
 // Animate project image and text:
 
-document.addEventListener('DOMContentLoaded', () => {
-  const fadeInObjs = gsap.utils.toArray('.fade_in');
-  fadeInObjs.forEach((obj) => {
-    const grandParentElem = (obj.parentNode).parentNode; // Get the parent of the parent of the elem to animate
-    const fadeInDir = obj.className.includes('text') ? '-200' : '200';
-    const fadeOutDir = obj.className.includes('text') ? '200' : '-200';
+// document.addEventListener('DOMContentLoaded', () => {
+//   const fadeInObjs = gsap.utils.toArray('.fade_in');
+//   fadeInObjs.forEach((obj) => {
+//     const grandParentElem = (obj.parentNode).parentNode; // Get the parent of the parent of the elem to animate
+//     const fadeInDir = obj.className.includes('text') ? '-200' : '200';
+//     const fadeOutDir = obj.className.includes('text') ? '200' : '-200';
 
-    gsap.set('.project', { perspective: '50vw' });
-    gsap.set(obj, { transformOrigin: 'center center -100vw', opacity: 0 });
+//     gsap.set('.project', { perspective: '50vw' });
+//     gsap.set(obj, { transformOrigin: 'center center -100vw', opacity: 0 });
 
-    const fadeAnim = gsap.timeline();
-    fadeAnim.fromTo(obj, { rotationX: fadeInDir, scale: 0.4 }, { ease: 'power1.out', duration: 1, rotationX: 0, scale: 1 }),
-      fadeAnim.fromTo(obj, {}, { duration: 0.5, opacity: 1 }, 0.5),
-      fadeAnim.fromTo(obj, { rotationX: 0, scale: 1 }, { ease: 'power1.in', duration: 1, rotationX: fadeOutDir, scale: 0.4 }),
-      fadeAnim.fromTo(obj, {}, { duration: 0.5, opacity: 0 }, 1.2);
+//     const fadeAnim = gsap.timeline();
+//     fadeAnim.fromTo(obj, { rotationX: fadeInDir, scale: 0.4 }, { ease: 'power1.out', duration: 1, rotationX: 0, scale: 1 }),
+//       fadeAnim.fromTo(obj, {}, { duration: 0.5, opacity: 1 }, 0.5),
+//       fadeAnim.fromTo(obj, { rotationX: 0, scale: 1 }, { ease: 'power1.in', duration: 1, rotationX: fadeOutDir, scale: 0.4 }),
+//       fadeAnim.fromTo(obj, {}, { duration: 0.5, opacity: 0 }, 1.2);
 
-    ScrollTrigger.create({
-      trigger: grandParentElem,
-      start: 'top bottom',
-      //markers: true,
-      scrub: true,
-      animation: fadeAnim,
-      toggleActions: 'restart complete reverse none'
-    });
-  });
+//     ScrollTrigger.create({
+//       trigger: grandParentElem,
+//       start: 'top bottom',
+//       //markers: true,
+//       scrub: true,
+//       animation: fadeAnim,
+//       toggleActions: 'restart complete reverse none'
+//     });
+//   });
 
-  const bgColObj = gsap.utils.toArray('.project');
-  bgColObj.forEach((pr) => {
-    console.log(pr);
-    const prCol = pr.dataset.color;
-    console.log(prCol);
-    const cssColVar = `$bg_${prCol}`;
-    console.log(cssColVar)
-    // const prNameClass = `.${pr.className.slice(-3)}`;
-    // console.log(prNameClass)
-    // const prNum = pr.className.slice(-1);
-    // console.log(prNum)
-    // const prBgCol = `$bg_col_${prNum}`;
-    // console.log(prBgCol)
+//   const bgColObj = gsap.utils.toArray('.project');
+//   bgColObj.forEach((pr) => {
+//     console.log(pr);
+//     const prCol = pr.dataset.color;
+//     console.log(prCol);
+//     const cssColVar = `$bg_${prCol}`;
+//     console.log(cssColVar)
+//     // const prNameClass = `.${pr.className.slice(-3)}`;
+//     // console.log(prNameClass)
+//     // const prNum = pr.className.slice(-1);
+//     // console.log(prNum)
+//     // const prBgCol = `$bg_col_${prNum}`;
+//     // console.log(prBgCol)
 
-    const bgColAnim = gsap.timeline();
-    bgColAnim.fromTo(pr, { backgroundColor: '##000521' }, { duration: 1, ease: "power2.in", backgroundColor: prCol }),
-      bgColAnim.fromTo(pr, { backgroundColor: prCol }, { duration: 1, ease: "expo.out", backgroundColor: '#000521' });
+//     const bgColAnim = gsap.timeline();
+//     bgColAnim.fromTo(pr, { backgroundColor: '##000521' }, { duration: 1, ease: "power2.in", backgroundColor: prCol }),
+//       bgColAnim.fromTo(pr, { backgroundColor: prCol }, { duration: 1, ease: "expo.out", backgroundColor: '#000521' });
 
-    ScrollTrigger.create({
-      trigger: pr,
-      start: 'top bottom',
-      end: 'bottom top',
-      markers: true,
-      scrub: true,
-      animation: bgColAnim,
-      toggleActions: 'restart complete reverse none'
-    });
-  });
-
-
-});
+//     ScrollTrigger.create({
+//       trigger: pr,
+//       start: 'top bottom',
+//       end: 'bottom top',
+//       markers: true,
+//       scrub: true,
+//       animation: bgColAnim,
+//       toggleActions: 'restart complete reverse none'
+//     });
+//   });
+// });
 
 // window.animateProject = () => {
 //   let prAnim = gsap.timeline({ ease: "power1.out" });

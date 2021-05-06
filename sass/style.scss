@@ -15,122 +15,137 @@ $bg_dark: #000521;
     margin    : 0;
     padding   : 0;
     box-sizing: border-box;
+    color     : white;
+
 }
 
 html {
-    font-size       : 100%;
-    scroll-snap-type: y proximity;
+    font-size: 100%;
 }
 
 html,
-body {
-    height: 100%;
-}
-
-// background-color     : rgb(223, 21, 21);
-// background-image     : url(code_background.jpg);
-// background-blend-mode: multiply;
-// background-size      : cover;
+body {}
 
 
 main {
-    height  : 100%;
-    position: relative;
-}
-
-.bg {
-    background-attachment: fixed;
+    width                : 100vw;
+    height               : 100vh;
     background-repeat    : no-repeat;
     background-size      : cover;
     background-position  : center center;
-    height               : 100%;
-    width                : 100%;
     background-blend-mode: multiply;
+    background-image     : url(../public/img/code_background.jpg);
+    background-color     : #0029fd;
+    position             : relative;
+    overflow-y           : scroll;
+    transition           : background 3s;
+    overscroll-behavior  : none;
+    scroll-snap-type     : y proximity;
 }
 
-.bg_top {
-    background-image : url(../public/img/code_background.jpg);
+.start {
+    position         : relative;
+    height           : 100%;
+    width            : 100%;
     display          : flex;
     justify-content  : center;
     align-items      : center;
-    position         : relative;
     scroll-snap-align: center;
-    background-color : #0029fd;
 }
 
-.project {
-    $gap                 : 0px;
-    scroll-snap-align    : center;
-    width                : 100%;
-    height               : 100%;
-    display              : grid;
-    gap                  : $gap;
-    grid-template-columns: repeat(auto-fit, minmax(clamp(50%, 500px, 100%), 1fr));
-    grid-template-rows   : auto;
-    background-color     : $bg_dark;
+#field {
+    //border           : 1px solid red;
+    width            : 50vw;
+    height           : 50vw;
+    perspective      : 100vw;
+    position         : relative;
+    display          : flex;
+    justify-content  : center;
+    align-items      : center;
+    transform-style  : preserve-3d;
+    //z-index        : 0;
 }
 
-.left,
-.right {
-    //border         : 1px red solid;
-    display        : flex;
-    justify-content: center;
-    align-items    : center;
+#name {
+    //position                 : absolute;
+    //border                 : 1px solid green;
+    display                  : flex;
+    flex-direction           : column;
+    //text-align             : end;
+    font-family              : Helvetica, Arial, sans-serif;
+    font-size                : 4vw;
+    line-height              : 6vw;
+    background-size          : 100%;
+    background-image         : linear-gradient(90deg, rgba(255, 255, 5, 1) 47%, rgba(144, 7, 240, 1) 80%, rgb(0, 41, 253) 100%);
+    background-clip          : text;
+    -webkit-background-clip  : text;
+    -webkit-text-fill-color  : transparent;
+    -moz-background-clip     : text;
+    -moz-text-fill-color     : transparent;
+    z-index                  : 1;
 }
 
-@media (max-width: 999px) {
-    .right {
-        align-items: flex-start;
+
+.name_part {}
+
+
+.pr {
+    // $gap                 : 0px;
+    scroll-snap-align              : start;
+    width                          : 100%;
+    height                         : 100%;
+    max-height                     : 700px;
+    align-self                     : center;
+    //display                      : grid;
+    // gap                  : $gap;
+    padding                        : 3vw 3vw 3vw 3vw;
+
+
+    @media (min-width: 480px) {
+        max-height: 100%;
     }
+
+    @media (min-width: 1200px) {
+        display              : grid;
+        grid-template-columns: 50% 50%;
+    }
+
 }
 
 .pr_img,
 .pr_text {
-    width: 80%;
+    margin: 10vw 0 10vw 0;
 
-    @media (min-width: 1000px) and (max-width: 1439px) {
-        width: 90%;
+    @media (min-width: 480px) {
+        max-width: 600px;
+        margin   : 15vw auto;
     }
 
-    @media (min-width: 650px) and (max-width: 999px) {
-        width: 70%;
+    @media (min-width: 960px) {
+        max-width: 800px;
+        margin   : 10vw auto;
     }
 
-    @media (max-width: 649px) {
-        width: 95%;
+    @media (min-width: 1200px) {
+        max-width      : 100%;
+        margin         : 0px;
+        padding        : 5%;
+        display        : flex;
+        justify-content: center;
+        align-items    : center;
     }
-}
-
-.pr_text {
-    display       : flex;
-    flex-direction: column;
 
 }
 
+.pr_img img {
+    width     : 94vw;
+    height    : 94vw;
+    object-fit: cover;
 
-
-
-.pr1 {
-    background-image     : url(../public/img/background_modes_large.jpg);
-    background-blend-mode: multiply;
-}
-
-.pr2 {
-    background-image     : url(../public/img/audition.png);
-    background-blend-mode: multiply;
-}
-
-#field {
-    /* border         : 1px solid black; */
-    width          : 50vw;
-    height         : 50vw;
-    perspective    : 100vw;
-    position       : relative;
-    display        : flex;
-    justify-content: center;
-    align-items    : center;
-    transform-style: preserve-3d;
-    z-index        : 0;
+    @media (min-width: 480px) {
+        width : 100%;
+        height: auto;
+    }
 }
 
 .logo {
@@ -149,22 +164,6 @@ main {
 
 .js {
     border-radius: 15%;
-}
-
-h1 {
-    position               : absolute;
-    font-family            : Helvetica, Arial, sans-serif;
-    font-size              : 12vw;
-    line-height            : 10vw;
-    background-size        : 100%;
-    background-image       : linear-gradient(90deg, rgba(255, 255, 5, 1) 47%, rgba(144, 7, 240, 1) 80%, rgb(0, 41, 253) 100%);
-    background-clip        : text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -moz-background-clip   : text;
-    -moz-text-fill-color   : transparent;
-    z-index                : 1;
-
 }
 
 .hide {
