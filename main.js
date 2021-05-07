@@ -43,27 +43,31 @@ const sassLogo = document.querySelector('.sass');
 
 Math.floor(Math.random() * 3) + 1;
 
-const appValues = {
-  css: { zMod: 0, skillLvl: 5 },
-  html: { zMod: 0, skillLvl: 5 },
-  js: { zMod: 0, skillLvl: 5 },
-  ai: { zMod: 0, skillLvl: 5 },
-  ps: { zMod: 0, skillLvl: 5 },
-  xd: { zMod: 0, skillLvl: 5 },
-  figma: { zMod: 0, skillLvl: 5 },
-  affinity: { zMod: 0, skillLvl: 5 },
-  react: { zMod: 0, skillLvl: 5 },
-  sass: { zMod: 0, skillLvl: 5 }
+const toolValues = {
+  css: { zMod: 0, skillLvl: 6 },
+  html: { zMod: 0, skillLvl: 6 },
+  js: { zMod: 0, skillLvl: 6 },
+  ai: { zMod: 0, skillLvl: 6 },
+  ps: { zMod: 0, skillLvl: 6 },
+  xd: { zMod: 0, skillLvl: 6 },
+  figma: { zMod: 0, skillLvl: 6 },
+  affinity: { zMod: 0, skillLvl: 6 },
+  react: { zMod: 0, skillLvl: 6 },
+  sass: { zMod: 0, skillLvl: 6 }
 }
 
 function logoPath(logo) { // Set randomized timeline for each logo
-  console.log(logo)
+
   const tool = logo.dataset.name;
+  logo.style.width = `calc(50px + ${toolValues[tool].skillLvl}vw`; // Set size based on skill lvl
+  logo.style.height = `calc(50px + ${toolValues[tool].skillLvl}vw`;
   logo.style.backgroundImage = `url(${tool}_logo.svg)`;
 
-  const zOffsetModifier = (Math.random() * (3.5 - 1.5) + 1.5).toFixed(2); // Variable rotation radius
-  appValues[logo.dataset.name].zMod = zOffsetModifier; // Update appValues object for later use
-  const zOffset = "-" + Math.floor(window.innerWidth / zOffsetModifier) + "px"; // Adjust radius according to screen width
+
+  const zOffsetModifier = (Math.random() * (1.2 - 0.7) + 0.7).toFixed(1); // Variable rotation radius
+  console.log(zOffsetModifier);
+  toolValues[tool].zMod = zOffsetModifier; // Update appValues obj with zMod
+  const zOffset = "-" + ((Math.sqrt(window.innerWidth) * 10).toFixed(0) * zOffsetModifier) + "px"; // Adjust radius according to screen width
   console.log(zOffset);
   const xDir = Math.random() < 0.5 ? 'left' : 'right'; // Clockwise or anti clockwise y-axis rotation
   const yDir = Math.random() < 0.5 ? 'up' : 'down'; // y translate up/down or down/up
@@ -75,7 +79,7 @@ function logoPath(logo) { // Set randomized timeline for each logo
   const ySecond = yDir === 'up' ? `${yTransform}vw` : `-${yTransform}vw`;
   const rotateDir = xDir === 'left' ? -360 : 360; // Replace left and right with number values
 
-  console.log(yFirst, ySecond)
+  //console.log(yFirst, ySecond)
 
   const pathTl = gsap.timeline({ repeat: -1 });
   pathTl.set(logo, { transformOrigin: `center center ${zOffset}`, rotation: angle })
@@ -107,55 +111,29 @@ window.animate = () => {
     .add(logoPath(reactLogo), 3)
     .add(logoPath(sassLogo), 4)
     .add(logoPath(figmaLogo), 2)
-  logoMaster.timeScale(0.5);
+  logoMaster.timeScale(1);
 }
 
 // Animate project image and text:
 
 document.addEventListener('DOMContentLoaded', () => {
-
-  //  Trigger bg img + col change after fadeinAnim:
-
-
-  // const bgObjs = document.querySelectorAll('.pr');
-  // bgObjs.forEach((colorPr, i) => {
-  //   console.log(colorPr);
-  //   const prevColor = i === 0 ? '#0029fd' : bgObjs[i - 1].dataset.color;
-  //   console.log(prevColor);
-  //   ScrollTrigger.create({
-  //     scroller: 'main',
-  //     trigger: colorPr,
-  //     start: 'bottom bottom',
-  //     onEnter: () => gsap.to('main', { backgroundColor: colorPr.dataset.color, overwrite: 'auto' }),
-  //     onEnterBack: () => gsap.to('main', { backgroundColor: prevColor, overwrite: 'auto' })
-  //   });
-  // });
-
-
-
+  // Set color change animation on scroll:
   const bgObjs = gsap.utils.toArray('.pr');
   bgObjs.forEach((obj) => {
     const bgCol = obj.dataset.color;
-    console.log(bgCol);
-
-    // const bgColAnim = gsap.timeline();
-    // bgColAnim.to('main', { duration: 2, backgroundColor: bgCol, overwrite: 'auto' });
-
     ScrollTrigger.create({
       scroller: 'main',
       trigger: obj,
       start: 'top 1px',
-      onEnter: () => gsap.to('main', { duration: 1, backgroundColor: bgCol, overwrite: 'auto' }),
+      onEnter: () => gsap.to('main', { duration: 2, backgroundColor: bgCol, overwrite: 'auto' }),
       onEnterBack: () => gsap.to('main', { duration: 2, backgroundColor: bgCol, overwrite: 'auto' })
     });
-
-
   });
-
+  // Animate fade in/out project img and text:
   const fadeInObjs = gsap.utils.toArray('.fade_in');
   fadeInObjs.forEach((obj) => {
 
-    const grandParentElem = (obj.parentNode).parentNode; // Get the parent of the parent of the elem to animate
+    const grandParentElem = (obj.parentNode).parentNode; // Get the parent of the parent of the elem to animate (used as the trigger for the scroll)
     const fadeInDir = obj.className.includes('text') ? '200' : '-200';
     const fadeOutDir = obj.className.includes('text') ? '200' : '-200';
     const bgCol = grandParentElem.dataset.color;
@@ -179,50 +157,6 @@ document.addEventListener('DOMContentLoaded', () => {
       animation: fadeAnim,
       toggleActions: 'restart complete restart none'
     });
-
-
   });
-
 });
 
-// function bgAnim(pr) {
-//   const bgCol = pr.dataset.color;
-//   console.log(bgCol)
-//   const bgImg = `url(../public/img/bg_${pr.dataset.image}.jpg)`;
-//   gsap.to('main', { duration: 2, backgroundColor: bgCol });
-// }
-
-
-// window.animateProject = () => {
-//   let prAnim = gsap.timeline({ ease: "power1.out" });
-//   prAnim.from('.anim_left', { stagger: 0.1, duration: 1, rotation: 360, opacity: 0, x: '20vw', scale: 0.4 })
-//   prAnim.from('.anim_right', { stagger: 0.1, duration: 1, rotation: 360, opacity: 0, x: '-20vw', scale: 0.4 }, 0);
-// }
-
-
-// const prAnim = gsap.from('.anim_left', { duration: 2, rotation: 360, opacity: 0, y: '20vw', scale: 0.4 });
-
-// ScrollTrigger.create({
-//   trigger: '.pr1',
-//   animation: prAnim,
-//   toggleActions: "restart none none none",
-//   //toggleClass: { targets: [".left", ".right"], className: "hide" }
-// });
-
-// const prNum = prj.className.slice(-1);
-//     const prElem = `pr${prNum}`;
-
-
-//         gsap.set(box1, { rotation: 20 });
-// const tl2 = gsap.timeline({ repeat: 1, onComplete: firstAnimation });
-// tl2.to(box1, { duration: 8, ease: "none", rotationY: 360 })
-//     .to(box1, { duration: 2, yoyo: true, repeat: 1, y: '10vw' }, 0)
-//     .to(box1, { duration: 2, yoyo: true, repeat: 1, y: '-10vw' }, 4)
-
-
-
-
-// document.addEventListener('pointermove', (event) => {
-//     console.log('Pointer moved');
-//     console.log(event);
-// });

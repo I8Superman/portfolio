@@ -42,7 +42,18 @@ main {
     //transition           : background 4s;
     overscroll-behavior    : none;
     scroll-snap-type       : y proximity;
+    /* Internet Explorer 10+ */
+    -ms-overflow-style     : none;
+    /* Firefox */
+    scrollbar-width        : none;
 }
+
+/* Safari and Chrome */
+main::-webkit-scrollbar {
+    display: none;
+}
+
+
 
 .start {
     position         : relative;
@@ -54,9 +65,12 @@ main {
     align-items      : center;
     scroll-snap-align: center;
 
+    @media (max-width: 1399px) {
+        justify-content: space-evenly;
+    }
+
     @media (min-width: 1200px) {
         flex-direction: row;
-        gap           : 4vw;
     }
 }
 
@@ -64,12 +78,16 @@ main {
     //border         : 1px solid red;
     width          : 40vw;
     height         : 40vw;
-    perspective    : 100vw;
     position       : relative;
     display        : flex;
     justify-content: center;
     align-items    : center;
+    perspective    : 100vw;
     transform-style: preserve-3d;
+
+    @media (min-width: 1200px) {
+        margin-left: auto;
+    }
 }
 
 #name {
@@ -171,16 +189,15 @@ main {
 }
 
 .logo {
-    position                 : absolute;
-    width                    : 15vw;
-    height                   : 15vw;
-    font-size                : 10px;
-    opacity                  : 1;
-    background-size          : contain;
-    background-repeat        : no-repeat;
-    /* transform             : translateZ(100px); */
-    /* transform-origin      : 50% 50% -80px; */
-    /* border-radius         : 50%; */
+    position                    : absolute;
+    // width                    : 2vw;
+    // height                   : 2vw;
+    opacity                     : 1;
+    background-size             : contain;
+    background-repeat           : no-repeat;
+    /* transform                : translateZ(100px); */
+    /* transform-origin         : 50% 50% -80px; */
+    /* border-radius            : 50%; */
 }
 
 
