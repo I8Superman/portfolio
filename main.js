@@ -20,11 +20,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Testing background img change animation
 
-window.bgchange = () => {
-  const bg = document.querySelector('main');
-  bg.style.backgroundImage = 'url(../public/img/background_modes_large.jpg)';
-  bg.style.backgroundColor = 'red';
-}
+// window.bgchange = () => {
+//   const bg = document.querySelector('main');
+//   gsap.set('main', { duration: 1, backgroundColor: '#ffff05', backgroundImage: 'url(../public/img/background_modes_large.jpg)' });
+
+// }
 
 
 // LOGO ANIMATIONS
@@ -113,17 +113,58 @@ window.animate = () => {
 // Animate project image and text:
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  //  Trigger bg img + col change after fadeinAnim:
+
+
+  // const bgObjs = document.querySelectorAll('.pr');
+  // bgObjs.forEach((colorPr, i) => {
+  //   console.log(colorPr);
+  //   const prevColor = i === 0 ? '#0029fd' : bgObjs[i - 1].dataset.color;
+  //   console.log(prevColor);
+  //   ScrollTrigger.create({
+  //     scroller: 'main',
+  //     trigger: colorPr,
+  //     start: 'bottom bottom',
+  //     onEnter: () => gsap.to('main', { backgroundColor: colorPr.dataset.color, overwrite: 'auto' }),
+  //     onEnterBack: () => gsap.to('main', { backgroundColor: prevColor, overwrite: 'auto' })
+  //   });
+  // });
+
+
+
+  const bgObjs = gsap.utils.toArray('.pr');
+  bgObjs.forEach((obj) => {
+    const bgCol = obj.dataset.color;
+    console.log(bgCol);
+
+    // const bgColAnim = gsap.timeline();
+    // bgColAnim.to('main', { duration: 2, backgroundColor: bgCol, overwrite: 'auto' });
+
+    ScrollTrigger.create({
+      scroller: 'main',
+      trigger: obj,
+      start: 'top 1px',
+      onEnter: () => gsap.to('main', { duration: 1, backgroundColor: bgCol, overwrite: 'auto' }),
+      onEnterBack: () => gsap.to('main', { duration: 2, backgroundColor: bgCol, overwrite: 'auto' })
+    });
+
+
+  });
+
   const fadeInObjs = gsap.utils.toArray('.fade_in');
   fadeInObjs.forEach((obj) => {
-    console.log(obj);
+
     const grandParentElem = (obj.parentNode).parentNode; // Get the parent of the parent of the elem to animate
     const fadeInDir = obj.className.includes('text') ? '200' : '-200';
     const fadeOutDir = obj.className.includes('text') ? '200' : '-200';
+    const bgCol = grandParentElem.dataset.color;
 
     gsap.set('.perspective', { perspective: '50vw' });
     gsap.set(obj, { transformOrigin: 'center center -50vw', opacity: 0 });
 
     const fadeAnim = gsap.timeline();
+
     fadeAnim.fromTo(obj, { rotationY: fadeInDir, scale: 0.4 }, { ease: 'power1.out', duration: 1, rotationY: 0, scale: 1 })
     fadeAnim.fromTo(obj, {}, { duration: 0.6, opacity: 1 }, 0.4)
     fadeAnim.fromTo(obj, { rotationY: 0, scale: 1 }, { ease: 'power1.in', duration: 1, rotationY: fadeOutDir, scale: 0.4 }),
@@ -133,42 +174,24 @@ document.addEventListener('DOMContentLoaded', () => {
       scroller: 'main',
       trigger: grandParentElem,
       start: 'top bottom',
-      markers: true,
+      //markers: true,
       scrub: true,
       animation: fadeAnim,
       toggleActions: 'restart complete restart none'
     });
+
+
   });
 
-  //   const bgColObj = gsap.utils.toArray('.project');
-  //   bgColObj.forEach((pr) => {
-  //     console.log(pr);
-  //     const prCol = pr.dataset.color;
-  //     console.log(prCol);
-  //     const cssColVar = `$bg_${prCol}`;
-  //     console.log(cssColVar)
-  //     // const prNameClass = `.${pr.className.slice(-3)}`;
-  //     // console.log(prNameClass)
-  //     // const prNum = pr.className.slice(-1);
-  //     // console.log(prNum)
-  //     // const prBgCol = `$bg_col_${prNum}`;
-  //     // console.log(prBgCol)
-
-  //     const bgColAnim = gsap.timeline();
-  //     bgColAnim.fromTo(pr, { backgroundColor: '##000521' }, { duration: 1, ease: "power2.in", backgroundColor: prCol }),
-  //       bgColAnim.fromTo(pr, { backgroundColor: prCol }, { duration: 1, ease: "expo.out", backgroundColor: '#000521' });
-
-  //     ScrollTrigger.create({
-  //       trigger: pr,
-  //       start: 'top bottom',
-  //       end: 'bottom top',
-  //       markers: true,
-  //       scrub: true,
-  //       animation: bgColAnim,
-  //       toggleActions: 'restart complete reverse none'
-  //     });
-  //   });
 });
+
+// function bgAnim(pr) {
+//   const bgCol = pr.dataset.color;
+//   console.log(bgCol)
+//   const bgImg = `url(../public/img/bg_${pr.dataset.image}.jpg)`;
+//   gsap.to('main', { duration: 2, backgroundColor: bgCol });
+// }
+
 
 // window.animateProject = () => {
 //   let prAnim = gsap.timeline({ ease: "power1.out" });

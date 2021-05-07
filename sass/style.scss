@@ -3,7 +3,7 @@ $yellow: #ffff05;
 $purple: #9007f0;
 
 $bg_col1: #9007f0;
-$bg_col2: #ffff05;
+$bg_col2: #ffda05;
 $bg_col3: #0029fd;
 $bg_dark: #000521;
 
@@ -12,11 +12,11 @@ $bg_dark: #000521;
 *,
 ::after,
 ::before {
-    margin    : 0;
-    padding   : 0;
-    box-sizing: border-box;
-    color     : white;
-
+    margin             : 0;
+    padding            : 0;
+    box-sizing         : border-box;
+    color              : white;
+    overscroll-behavior: none;
 }
 
 html {
@@ -28,20 +28,20 @@ body {}
 
 
 main {
-    width                : 100vw;
-    height               : 100vh;
-    background-repeat    : no-repeat;
-    background-size      : cover;
-    background-position  : center center;
-    background-blend-mode: multiply;
-    background-image     : url(../public/img/code_background.jpg);
-    background-color     : #0029fd;
-    position             : relative;
-    overflow-y           : scroll;
-    overflow-x           : hidden;
-    transition           : background 3s;
-    overscroll-behavior  : none;
-    scroll-snap-type     : y proximity;
+    width                  : 100vw;
+    height                 : 100vh;
+    background-repeat      : no-repeat;
+    background-size        : cover;
+    background-position    : center center;
+    background-blend-mode  : multiply;
+    background-image       : url(../public/img/bg_code.jpg);
+    background-color       : #0029fd;
+    position               : relative;
+    overflow-y             : scroll;
+    overflow-x             : hidden;
+    //transition           : background 4s;
+    overscroll-behavior    : none;
+    scroll-snap-type       : y proximity;
 }
 
 .start {
@@ -61,7 +61,7 @@ main {
 }
 
 #field {
-    border         : 1px solid red;
+    //border         : 1px solid red;
     width          : 40vw;
     height         : 40vw;
     perspective    : 100vw;
@@ -74,7 +74,7 @@ main {
 
 #name {
     //position                 : absolute;
-    border                 : 1px solid green;
+    //border                 : 1px solid green;
     display                : flex;
     flex-direction         : column;
     text-align             : center;
@@ -82,7 +82,7 @@ main {
     font-size              : calc(1.3rem + 3vw);
     line-height            : calc(2rem + 3.5vw);
     background-size        : 100%;
-    background-image       : linear-gradient(90deg, rgba(255, 255, 5, 1) 47%, rgba(144, 7, 240, 1) 80%, rgb(0, 41, 253) 100%);
+    background-image       : linear-gradient(90deg, rgba(255, 255, 5, 1) 30%, rgba(144, 7, 240, 1) 80%, rgb(0, 41, 253) 100%);
     background-clip        : text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -108,7 +108,7 @@ main {
 
 
 .pr {
-    border                           : 1px red solid;
+    //border                           : 1px red solid;
     // $gap                 : 0px;
     scroll-snap-align                : start;
     width                            : 100%;
