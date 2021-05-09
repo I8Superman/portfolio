@@ -6,6 +6,7 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SSA</title>
+  <script src="https://kit.fontawesome.com/d93497a3b5.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -15,23 +16,32 @@
       <div id="field">
         <div class="logo html" data-name="html"></div>
         <div class="logo css" data-name="css"></div>
-        <div class="logo js" data-name="js"></div>
+        <div class="logo js b_radius" data-name="js"></div>
         <div class="logo ps" data-name="ps"></div>
         <div class="logo ai" data-name="ai"></div>
         <div class="logo xd" data-name="xd"></div>
-        <div class="logo affinity" data-name="affinity"></div>
+        <div class="logo affinity b_radius" data-name="affinity"></div>
         <div class="logo figma" data-name="figma"></div>
         <div class="logo react" data-name="react"></div>
         <div class="logo sass" data-name="sass"></div>
       </div>
       <div id="name">
-        <h1 class="name_part">Simon</h1>
-        <h1 class="name_part">Schlichtkrull</h1>
-        <h1 class="name_part">Andersen</h1>
+        <span class="info_hover">
+          <h1 class="name_part">Simon<br>
+            Schlichtkrull<br>Andersen</h1>
+        </span>
       </div>
       <!-- <div id="info hide">
         <h2 class="info_text"></h2>
       </div> -->
+      <div id="please_scroll">
+        <h5>Projects</h5>
+        <svg id="scroll_pointer" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 597.73 337.64">
+          <path id="arrow"
+            d="M299,251c20.28-20.35,40.13-40.32,60-60.24Q450.72,99,542.48,7.27c9.75-9.75,23-9.56,32.7.29q8.05,8.21,15.91,16.59c9,9.61,8.87,21.32-.44,30.64q-82.35,82.4-164.77,164.69Q372,273.39,318,327.21a40.78,40.78,0,0,1-13.76,9.2c-8,3-15.37.28-21.36-5.7q-35.58-35.47-71.09-71Q125.34,173.28,38.92,86.83C28.2,76.11,17.43,65.43,6.79,54.63c-9.13-9.27-9-21.7.14-31Q15.17,15.22,23.54,7c9.45-9.31,21.93-9.32,31.4.14Q151.81,104,248.63,200.85q23.49,23.51,47,47C296.53,248.82,297.53,249.66,299,251Z"
+            fill="none" />
+        </svg>
+      </div>
 
     </section>
 
@@ -46,7 +56,16 @@
             nisi
             animi ex ducimus magni voluptatem consequuntur possimus quod voluptatibus quibusdam molestiae dolor minus
             minima, obcaecati, atque nam excepturi pariatur?</p>
-          <div class="links">Links here!</div>
+          <div class="links">
+            <a class="website" href="">
+              <i class="fas fa-link"></i>
+              <h3>website</h3>
+            </a>
+            <a class="code" href="">
+              <i class="fab fa-github"></i>
+              <h3>code</h3>
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -70,7 +89,7 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/TextPlugin.min.js"></script>
   <script type="module" src="./main.js"></script>
 </body>
 

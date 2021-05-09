@@ -7,7 +7,24 @@ $bg_col2: #ffda05;
 $bg_col3: #0029fd;
 $bg_dark: #000521;
 
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Roboto:wght@500;700;900&display=swap');
 
+$paragraph: 300 100%/130% 'Open sans',
+Arial,
+Sans-serif;
+$name: 700 calc(2rem + 5vw)/100% "Roboto",
+Helvetica,
+Arial,
+sans-serif;
+$headline: 700 150%/100% "Roboto",
+Helvetica,
+Arial,
+sans-serif;
+
+$weight-main: 900;
+$weight-pr  : 700;
+$weight-bold: 700;
+$weight-read: 400;
 
 *,
 ::after,
@@ -15,7 +32,6 @@ $bg_dark: #000521;
     margin             : 0;
     padding            : 0;
     box-sizing         : border-box;
-    color              : white;
     overscroll-behavior: none;
 }
 
@@ -26,6 +42,9 @@ html {
 html,
 body {}
 
+a {
+    text-decoration: none;
+}
 
 main {
     width                  : 100vw;
@@ -46,14 +65,13 @@ main {
     -ms-overflow-style     : none;
     /* Firefox */
     scrollbar-width        : none;
+    scroll-behavior        : smooth;
 }
 
 /* Safari and Chrome */
 main::-webkit-scrollbar {
     display: none;
 }
-
-
 
 .start {
     position         : relative;
@@ -92,21 +110,13 @@ main::-webkit-scrollbar {
 
 #name {
     //position                 : absolute;
-    //border                 : 1px solid green;
-    display                : flex;
-    flex-direction         : column;
-    text-align             : center;
-    font-family            : Helvetica, Arial, sans-serif;
-    font-size              : calc(1.3rem + 3vw);
-    line-height            : calc(2rem + 3.5vw);
-    background-size        : 100%;
-    background-image       : linear-gradient(90deg, rgba(255, 255, 5, 1) 30%, rgba(144, 7, 240, 1) 80%, rgb(0, 41, 253) 100%);
-    background-clip        : text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -moz-background-clip   : text;
-    -moz-text-fill-color   : transparent;
-    z-index                : 1;
+    //border                     : 1px solid green;
+    height                     : auto;
+    display                    : flex;
+    flex-direction             : column;
+    text-align                 : left;
+    justify-content            : center;
+    //z-index                  : 1;
 
     @media (min-width: 1200px) {
         text-align    : left;
@@ -118,12 +128,51 @@ main::-webkit-scrollbar {
         text-align    : left;
         // font-size  : 4vw;
         // line-height: 6vw;
+    }
+
+    h1 {
+        font                        : $name;
+        // font-size              : calc(2rem + 5vw);
+        // line-height            : 100%;
+        //background-size           : 100%;
+        background                  : linear-gradient(90deg, rgba(255, 255, 5, 1) 30%, rgba(144, 7, 240, 1) 70%, rgb(0, 41, 253) 100%);
+        background-clip             : text;
+        -webkit-background-clip     : text;
+        -webkit-text-fill-color     : transparent;
+        -moz-background-clip        : text;
+        -moz-text-fill-color        : transparent;
     }
 }
 
+#please_scroll {
+    display          : flex;
+    flex-direction   : column;
+    justify-content  : space-between;
+    align-items      : center;
+    height           : auto;
+    width            : 10vh;
+    //border         : 1px red solid;
+    position         : absolute;
+    z-index          : 2;
+    left             : calc(50% - 5vh);
+    bottom           : 2rem;
+    transition       : all 0.5s;
 
-.name_part {}
+    h5 {
+        font-family  : $headline;
+        color        : $blue;
+        margin-bottom: 2vh;
+    }
 
+    #scroll_pointer {
+        width: 2rem;
+
+
+        #arrow {
+            fill: $blue;
+        }
+    }
+}
 
 .pr {
     //border                           : 1px red solid;
@@ -150,43 +199,102 @@ main::-webkit-scrollbar {
         grid-template-columns: 50% 50%;
     }
 
+    .pr_img,
+    .pr_text {
+        margin: 10vw 0 10vw 0;
+
+        @media (min-width: 480px) {
+            max-width: 600px;
+            margin   : 15vw auto;
+        }
+
+        @media (min-width: 960px) {
+            max-width: 800px;
+            margin   : 10vw auto;
+        }
+
+        @media (min-width: 1200px) {
+            max-width      : 100%;
+            margin         : 0px;
+            padding        : 5%;
+            display        : flex;
+            justify-content: center;
+            align-items    : center;
+        }
+
+        img {
+            width     : 94vw;
+            height    : 94vw;
+            object-fit: cover;
+
+            @media (min-width: 480px) {
+                width : 100%;
+                height: auto;
+            }
+        }
+    }
+
+    .pr_text .text_container {
+
+        h2 {
+            font                   : $headline;
+            background             : linear-gradient(90deg, rgba(255, 255, 5, 1) 9%, rgba(144, 7, 240, 1) 35%, rgba(0, 41, 253, 1) 45%);
+            background-clip        : text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            -moz-background-clip   : text;
+            -moz-text-fill-color   : transparent;
+            margin-bottom          : 1rem;
+
+            @media (min-width: 960px) {
+                font-size    : 180%;
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        p {
+            color        : white;
+            font         : $paragraph;
+            margin-bottom: 1rem;
+
+            @media (min-width: 960px) {
+                font-size    : 110%;
+                margin-bottom: 1.5rem;
+            }
+        }
+
+
+        .links {
+            width  : 100%;
+            display: flex;
+
+            a {
+                margin-right: 2rem;
+            }
+
+            i {
+                color       : rgb(152, 142, 184);
+                margin-right: 0.5rem;
+            }
+
+            h3 {
+                display    : inline;
+                font       : $paragraph;
+                color      : rgb(126, 118, 150);
+                font-weight: 400;
+
+                @media (min-width: 960px) {
+                    font-size    : 110%;
+                    margin-bottom: 1.5rem;
+                }
+            }
+
+
+        }
+    }
 }
 
-.pr_img,
-.pr_text {
-    margin: 10vw 0 10vw 0;
 
-    @media (min-width: 480px) {
-        max-width: 600px;
-        margin   : 15vw auto;
-    }
-
-    @media (min-width: 960px) {
-        max-width: 800px;
-        margin   : 10vw auto;
-    }
-
-    @media (min-width: 1200px) {
-        max-width      : 100%;
-        margin         : 0px;
-        padding        : 5%;
-        display        : flex;
-        justify-content: center;
-        align-items    : center;
-    }
-
-}
-
-.pr_img img {
-    width     : 94vw;
-    height    : 94vw;
-    object-fit: cover;
-
-    @media (min-width: 480px) {
-        width : 100%;
-        height: auto;
-    }
-}
 
 .logo {
     position                    : absolute;
@@ -201,10 +309,14 @@ main::-webkit-scrollbar {
 }
 
 
-.js {
+.b_radius {
     border-radius: 15%;
 }
 
 .hide {
     display: none;
+}
+
+.fade {
+    opacity: 0;
 }

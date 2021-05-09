@@ -5,6 +5,141 @@ import './sass/style.scss'
 
 console.log('Js runninz');
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(TextPlugin);
+
+document.addEventListener('DOMContentLoaded', init);
+
+function init() {
+  animateName();
+  animateLogos();
+  animateScrollArrow();
+  createScrollAnimations();
+  txtAnimate();
+};
+
+// Hide scroll arrow when scrolling down
+function animateScrollArrow() {
+  const plScroll = document.querySelector('#please_scroll');
+  const scrollContainer = document.querySelector('main');
+  console.log(plScroll)
+  scrollContainer.addEventListener('scroll', cont => {
+    if (cont.target.scrollTop > 200) {
+      console.log(cont.target.scrollTop);
+
+      plScroll.classList.add('fade');
+    } else {
+      console.log('else triggered!')
+      plScroll.classList.remove('fade');
+    }
+  });
+
+  gsap.to('#scroll_pointer', { duration: 1, yoyo: true, repeat: -1, ease: 'power1.inOut', y: '1vh' });
+
+}
+
+function txtAnimate() {
+  const txtChange = gsap.timeline({ paused: true });
+  txtChange.to('.name_part', {
+    duration: 1, fontSize: '2.5rem', lineHeight: '110%', fontWeight: '700', text: {
+      value: "Hi there!<br>I'm a 3rd sem Multimedia Design student looking for an internship to get a taste of real life Fronted Development and sharpen my coding and design skills"
+    }
+  })
+
+  const nameObj = document.querySelector('#name');
+  nameObj.addEventListener('mouseenter', () => {
+    txtChange.play();
+  });
+  nameObj.addEventListener('mouseleave', () => {
+    const plBack = txtChange.reverse();
+  });
+
+}
+
+function animateName() {
+
+  gsap.to('#name', { duration: 4, x: 10, yoyo: true, repeat: -1, ease: 'power1.inOut', opacity: 1 })
+}
+
+function animateLogos() {
+
+  const toolValues = {
+    css: { zMod: 0, skillLvl: 5 },
+    html: { zMod: 0, skillLvl: 6 },
+    js: { zMod: 0, skillLvl: 6 },
+    ai: { zMod: 0, skillLvl: 3 },
+    ps: { zMod: 0, skillLvl: 5 },
+    xd: { zMod: 0, skillLvl: 4 },
+    figma: { zMod: 0, skillLvl: 3 },
+    affinity: { zMod: 0, skillLvl: 3 },
+    react: { zMod: 0, skillLvl: 6 },
+    sass: { zMod: 0, skillLvl: 4 }
+  }
+
+  const htmlLogo = document.querySelector('.html');
+  const cssLogo = document.querySelector('.css');
+  const jsLogo = document.querySelector('.js');
+  const psLogo = document.querySelector('.ps');
+  const aiLogo = document.querySelector('.ai');
+  const xdLogo = document.querySelector('.xd');
+  const affinityLogo = document.querySelector('.affinity');
+  const reactLogo = document.querySelector('.react');
+  const figmaLogo = document.querySelector('.figma');
+  const sassLogo = document.querySelector('.sass');
+
+  const getPosition = () => {
+    const randomTimeScale = Math.floor(Math.random() * (8 - 1) + 1);
+    console.log(randomTimeScale);
+    return randomTimeScale;
+  }
+  let logoMaster = gsap.timeline();
+
+  logoMaster.add(logoPath(htmlLogo)) // Combine all the logo timelines
+    .add(logoPath(cssLogo).timeScale((Math.random() * (0.7 - 0.4) + 0.4).toFixed(1)), Math.floor(Math.random() * (8 - 1) + 1) * -1)
+    .add(logoPath(jsLogo).timeScale((Math.random() * (0.7 - 0.4) + 0.4).toFixed(1)), Math.floor(Math.random() * (8 - 1) + 1) * -1)
+    .add(logoPath(psLogo).timeScale((Math.random() * (0.7 - 0.4) + 0.4).toFixed(1)), Math.floor(Math.random() * (8 - 1) + 1) * -1)
+    .add(logoPath(aiLogo).timeScale((Math.random() * (0.7 - 0.4) + 0.4).toFixed(1)), Math.floor(Math.random() * (8 - 1) + 1) * -1)
+    .add(logoPath(xdLogo).timeScale((Math.random() * (0.7 - 0.4) + 0.4).toFixed(1)), Math.floor(Math.random() * (8 - 1) + 1) * -1)
+    .add(logoPath(affinityLogo).timeScale((Math.random() * (0.7 - 0.4) + 0.4).toFixed(1)), Math.floor(Math.random() * (8 - 1) + 1) * -1)
+    .add(logoPath(reactLogo).timeScale((Math.random() * (0.7 - 0.4) + 0.4).toFixed(1)), Math.floor(Math.random() * (8 - 1) + 1) * -1)
+    .add(logoPath(sassLogo).timeScale((Math.random() * (0.7 - 0.4) + 0.4).toFixed(1)), Math.floor(Math.random() * (8 - 1) + 1) * -1)
+    .add(logoPath(figmaLogo).timeScale((Math.random() * (0.7 - 0.4) + 0.4).toFixed(1)), Math.floor(Math.random() * (8 - 1) + 1) * -1)
+
+
+  function logoPath(logo) { // Set randomized timeline for each logo
+    const tool = logo.dataset.name;
+    logo.style.width = `calc(50px + ${toolValues[tool].skillLvl}vw`; // Set size based on skill lvl
+    logo.style.height = `calc(50px + ${toolValues[tool].skillLvl}vw`;
+    logo.style.backgroundImage = `url(${tool}_logo.svg)`;
+
+    const zOffsetModifier = (Math.random() * (1 - 0.5) + 0.5).toFixed(1); // Variable rotation radius
+    toolValues[tool].zMod = zOffsetModifier; // Update appValues obj with zMod
+    const zOffset = "-" + (Math.round((Math.sqrt(window.innerWidth) * 10)) * zOffsetModifier) + "px"; // Adjust radius according to screen width
+    //console.log(zOffset);
+    const xDir = Math.random() < 0.5 ? 'left' : 'right'; // Clockwise or anti clockwise y-axis rotation
+    const yDir = Math.random() < 0.5 ? 'up' : 'down'; // y translate up/down or down/up
+    const yTransform = Math.floor(Math.random() * (20 - 2) + 2); // Degree of y-translate
+    // Adjust z-axis rotation according to y rotation and y translate
+    const angle = xDir === 'left' && yDir === 'down' || xDir === 'right' && yDir === 'up' ? -(yTransform * 2) : yTransform * 2;
+
+    const yFirst = yDir === 'up' ? `-${yTransform}vw` : `${yTransform}vw`; // Set 1st y translate according to yDir
+    const ySecond = yDir === 'up' ? `${yTransform}vw` : `-${yTransform}vw`;
+    const rotateDir = xDir === 'left' ? -360 : 360; // Replace left and right with number values
+
+    // GSAP Timeline for the logo animations
+    const pathTl = gsap.timeline({ repeat: -1 });
+    pathTl.set(logo, { transformOrigin: `center center ${zOffset}`, rotation: angle })
+      .to(logo, { duration: 8, ease: "none", rotationY: rotateDir })
+      //.to(logo, { duration: 4, ease: "none", yoyo: true, repeat: 1, scale: 0.8 }, 0)
+      .to(logo, { duration: 2, yoyo: true, repeat: 1, y: yFirst }, 0)
+      .to(logo, { duration: 2, yoyo: true, repeat: 1, y: ySecond }, 4)
+    return pathTl // Return the single logo with its timeline animation
+  }
+
+}
+
+function createScrollAnimations() {
+
+}
 
 // const field = document.querySelector('#field');
 // console.log(field);
@@ -28,67 +163,25 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 // LOGO ANIMATIONS
-const htmlLogo = document.querySelector('.html');
-const cssLogo = document.querySelector('.css');
-const jsLogo = document.querySelector('.js');
-const psLogo = document.querySelector('.ps');
-const aiLogo = document.querySelector('.ai');
-const xdLogo = document.querySelector('.xd');
-const affinityLogo = document.querySelector('.affinity');
-const reactLogo = document.querySelector('.react');
-const figmaLogo = document.querySelector('.figma');
-const sassLogo = document.querySelector('.sass');
 
 
 
 Math.floor(Math.random() * 3) + 1;
 
 const toolValues = {
-  css: { zMod: 0, skillLvl: 6 },
+  css: { zMod: 0, skillLvl: 5 },
   html: { zMod: 0, skillLvl: 6 },
   js: { zMod: 0, skillLvl: 6 },
-  ai: { zMod: 0, skillLvl: 6 },
-  ps: { zMod: 0, skillLvl: 6 },
-  xd: { zMod: 0, skillLvl: 6 },
-  figma: { zMod: 0, skillLvl: 6 },
-  affinity: { zMod: 0, skillLvl: 6 },
+  ai: { zMod: 0, skillLvl: 3 },
+  ps: { zMod: 0, skillLvl: 5 },
+  xd: { zMod: 0, skillLvl: 4 },
+  figma: { zMod: 0, skillLvl: 3 },
+  affinity: { zMod: 0, skillLvl: 3 },
   react: { zMod: 0, skillLvl: 6 },
-  sass: { zMod: 0, skillLvl: 6 }
+  sass: { zMod: 0, skillLvl: 4 }
 }
 
-function logoPath(logo) { // Set randomized timeline for each logo
 
-  const tool = logo.dataset.name;
-  logo.style.width = `calc(50px + ${toolValues[tool].skillLvl}vw`; // Set size based on skill lvl
-  logo.style.height = `calc(50px + ${toolValues[tool].skillLvl}vw`;
-  logo.style.backgroundImage = `url(${tool}_logo.svg)`;
-
-
-  const zOffsetModifier = (Math.random() * (1.2 - 0.7) + 0.7).toFixed(1); // Variable rotation radius
-  console.log(zOffsetModifier);
-  toolValues[tool].zMod = zOffsetModifier; // Update appValues obj with zMod
-  const zOffset = "-" + ((Math.sqrt(window.innerWidth) * 10).toFixed(0) * zOffsetModifier) + "px"; // Adjust radius according to screen width
-  console.log(zOffset);
-  const xDir = Math.random() < 0.5 ? 'left' : 'right'; // Clockwise or anti clockwise y-axis rotation
-  const yDir = Math.random() < 0.5 ? 'up' : 'down'; // y translate up/down or down/up
-  const yTransform = Math.floor(Math.random() * (20 - 2) + 2); // Degree of y-translate
-  // Adjust z-axis rotation according to y rotation and y translate
-  const angle = xDir === 'left' && yDir === 'down' || xDir === 'right' && yDir === 'up' ? -(yTransform * 2) : yTransform * 2;
-
-  const yFirst = yDir === 'up' ? `-${yTransform}vw` : `${yTransform}vw`; // Set 1st y translate according to yDir
-  const ySecond = yDir === 'up' ? `${yTransform}vw` : `-${yTransform}vw`;
-  const rotateDir = xDir === 'left' ? -360 : 360; // Replace left and right with number values
-
-  //console.log(yFirst, ySecond)
-
-  const pathTl = gsap.timeline({ repeat: -1 });
-  pathTl.set(logo, { transformOrigin: `center center ${zOffset}`, rotation: angle })
-    .to(logo, { duration: 8, ease: "none", rotationY: rotateDir })
-    //.to(logo, { duration: 4, ease: "none", yoyo: true, repeat: 1, scale: 0.8 }, 0)
-    .to(logo, { duration: 2, yoyo: true, repeat: 1, y: yFirst }, 0)
-    .to(logo, { duration: 2, yoyo: true, repeat: 1, y: ySecond }, 4)
-  return pathTl
-}
 
 window.addEventListener('resize', resetZOffset);
 
@@ -99,20 +192,7 @@ function resetZOffset() {
 
 
 
-window.animate = () => {
-  let logoMaster = gsap.timeline();
-  logoMaster.add(logoPath(htmlLogo))
-    .add(logoPath(cssLogo), 3)
-    .add(logoPath(jsLogo), 5)
-    .add(logoPath(psLogo), 4)
-    .add(logoPath(aiLogo), 3)
-    .add(logoPath(xdLogo), 2)
-    .add(logoPath(affinityLogo), 5)
-    .add(logoPath(reactLogo), 3)
-    .add(logoPath(sassLogo), 4)
-    .add(logoPath(figmaLogo), 2)
-  logoMaster.timeScale(1);
-}
+
 
 // Animate project image and text:
 
