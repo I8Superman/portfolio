@@ -16,7 +16,7 @@ $name: 700 calc(2rem + 5vw)/100% "Roboto",
 Helvetica,
 Arial,
 sans-serif;
-$headline: 700 150%/100% "Roboto",
+$headline: 700 150%/110% "Roboto",
 Helvetica,
 Arial,
 sans-serif;
@@ -150,23 +150,24 @@ main::-webkit-scrollbar {
     justify-content  : space-between;
     align-items      : center;
     height           : auto;
-    width            : 10vh;
+    width            : 20vh;
     //border         : 1px red solid;
     position         : absolute;
     z-index          : 2;
-    left             : calc(50% - 5vh);
+    left             : calc(50% - 10vh);
     bottom           : 2rem;
     transition       : all 0.5s;
 
     h5 {
-        font-family  : $headline;
+        font         : $headline;
         color        : $blue;
+        font-size    : 1rem;
         margin-bottom: 2vh;
+        text-align   : center;
     }
 
     #scroll_pointer {
-        width: 2rem;
-
+        width: 1.5rem;
 
         #arrow {
             fill: $blue;
@@ -223,9 +224,11 @@ main::-webkit-scrollbar {
         }
 
         img {
-            width     : 94vw;
-            height    : 94vw;
-            object-fit: cover;
+            width             : 94vw;
+            height            : 94vw;
+            object-fit        : cover;
+            -webkit-box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.4);
+            box-shadow        : 5px 5px 10px 1px rgba(0, 0, 0, 0.4);
 
             @media (min-width: 480px) {
                 width : 100%;

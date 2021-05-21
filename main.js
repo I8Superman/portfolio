@@ -24,7 +24,7 @@ function animateScrollArrow() {
   console.log(plScroll)
   scrollContainer.addEventListener('scroll', cont => {
     if (cont.target.scrollTop > 200) {
-      console.log(cont.target.scrollTop);
+      //console.log(cont.target.scrollTop);
 
       plScroll.classList.add('fade');
     } else {
@@ -33,7 +33,7 @@ function animateScrollArrow() {
     }
   });
 
-  gsap.to('#scroll_pointer', { duration: 1, yoyo: true, repeat: -1, ease: 'power1.inOut', y: '1vh' });
+  gsap.to('#please_scroll', { duration: 1, yoyo: true, repeat: -1, ease: 'power1.inOut', y: '1vh' });
 
 }
 
@@ -56,7 +56,6 @@ function txtAnimate() {
 }
 
 function animateName() {
-
   gsap.to('#name', { duration: 4, x: 10, yoyo: true, repeat: -1, ease: 'power1.inOut', opacity: 1 })
 }
 
@@ -141,25 +140,7 @@ function createScrollAnimations() {
 
 }
 
-// const field = document.querySelector('#field');
-// console.log(field);
-// const box1 = document.querySelector('.box1');
 
-// gsap.set(field, { perspective: 200 });
-
-
-// const zOffset = "-" + Math.floor(window.innerWidth / 3) + "vw";
-// console.log(zOffset)
-
-// gsap.set(box1, { transformOrigin: `center center ${zOffset}` }); // Set z value relative to screen width: window width (px) / 3 > value in
-
-// Testing background img change animation
-
-// window.bgchange = () => {
-//   const bg = document.querySelector('main');
-//   gsap.set('main', { duration: 1, backgroundColor: '#ffff05', backgroundImage: 'url(../public/img/background_modes_large.jpg)' });
-
-// }
 
 
 // LOGO ANIMATIONS
