@@ -65,7 +65,6 @@ function animateName() {
 }
 
 function animateLogos() {
-
   const toolValues = {
     css: { zMod: 0, skillLvl: 5 },
     html: { zMod: 0, skillLvl: 6 },
@@ -107,7 +106,6 @@ function animateLogos() {
     .add(logoPath(reactLogo).timeScale((Math.random() * (0.7 - 0.4) + 0.4).toFixed(1)), Math.floor(Math.random() * (8 - 1) + 1) * -1)
     .add(logoPath(sassLogo).timeScale((Math.random() * (0.7 - 0.4) + 0.4).toFixed(1)), Math.floor(Math.random() * (8 - 1) + 1) * -1)
     .add(logoPath(figmaLogo).timeScale((Math.random() * (0.7 - 0.4) + 0.4).toFixed(1)), Math.floor(Math.random() * (8 - 1) + 1) * -1)
-
 
   function logoPath(logo) { // Set randomized timeline for each logo
     const tool = logo.dataset.name;
@@ -151,21 +149,6 @@ function createScrollAnimations() {
 // LOGO ANIMATIONS
 
 
-
-Math.floor(Math.random() * 3) + 1;
-
-const toolValues = {
-  css: { zMod: 0, skillLvl: 5 },
-  html: { zMod: 0, skillLvl: 6 },
-  js: { zMod: 0, skillLvl: 6 },
-  ai: { zMod: 0, skillLvl: 3 },
-  ps: { zMod: 0, skillLvl: 5 },
-  xd: { zMod: 0, skillLvl: 4 },
-  figma: { zMod: 0, skillLvl: 3 },
-  affinity: { zMod: 0, skillLvl: 3 },
-  react: { zMod: 0, skillLvl: 6 },
-  sass: { zMod: 0, skillLvl: 4 }
-}
 
 
 

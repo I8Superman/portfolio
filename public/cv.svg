@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="77" height="75" viewBox="0 0 77 75">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ffff05"/>
+      <stop offset="1" stop-color="#9007f0"/>
+    </linearGradient>
+    <clipPath id="clip-cv">
+      <rect width="77" height="75"/>
+    </clipPath>
+  </defs>
+  <g id="cv" clip-path="url(#clip-cv)">
+    <g id="Group_2" data-name="Group 2">
+      <path id="Subtraction_8" data-name="Subtraction 8" d="M-531,85h-55a2,2,0,0,1-2-2V12a2,2,0,0,1,2-2h35.5V27a3.5,3.5,0,0,0,3.5,3.5h18V83A2,2,0,0,1-531,85Zm-48-8v3h42V77Zm0-8v3h42V69Zm0-8v3h42V61Zm11.048-25.656a9.747,9.747,0,0,0-7.218,2.578c-1.693,1.707-2.552,4.189-2.552,7.375A10.976,10.976,0,0,0-576.27,51.2a8.162,8.162,0,0,0,3.447,3.224,12.459,12.459,0,0,0,5.149.916,10.587,10.587,0,0,0,4.278-.752,7.244,7.244,0,0,0,2.814-2.228,9.693,9.693,0,0,0,1.661-3.678l-5.234-1.582a6,6,0,0,1-1.273,2.8,3.349,3.349,0,0,1-2.59.962,3.354,3.354,0,0,1-2.742-1.193c-.647-.788-.976-2.271-.976-4.409a6.978,6.978,0,0,1,.817-3.811,3.52,3.52,0,0,1,3.111-1.634,3.543,3.543,0,0,1,1.622.369,3.462,3.462,0,0,1,1.226,1.055,4.544,4.544,0,0,1,.581,1.292l5.273-1.173a8.734,8.734,0,0,0-3.1-4.535A9.844,9.844,0,0,0-567.951,35.343Zm10.02.329,7.3,19.328h6.473l7.172-19.327h-6.064l-4.285,13.909-4.351-13.909h-6.249Z" transform="translate(598 -10)" fill="url(#linear-gradient)"/>
+      <path id="Path_1" data-name="Path 1" d="M637.878,0l18.987,18.244H637.878Z" transform="translate(-588)" fill="url(#linear-gradient)"/>
+    </g>
+  </g>
+</svg>
