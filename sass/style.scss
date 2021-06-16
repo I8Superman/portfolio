@@ -103,27 +103,20 @@ main::-webkit-scrollbar {
     perspective    : 100vw;
     transform-style: preserve-3d;
 
-
     @media (min-width: 1200px) {
         margin-left: auto;
     }
 }
 
 #name {
-    //position                 : absolute;
+    position                     : relative;
     //border                     : 1px solid green;
-    height                     : auto;
-    display                    : flex;
-    flex-direction             : column;
-    text-align                 : left;
-    justify-content            : center;
+    height                       : auto;
+    display                      : flex;
+    flex-direction               : column;
+    text-align                   : left;
+    justify-content              : center;
     //z-index                  : 1;
-
-    @media (min-width: 1200px) {
-        text-align    : left;
-        // font-size  : 4vw;
-        // line-height: 6vw;
-    }
 
     @media (min-width: 1200px) {
         text-align    : left;
@@ -142,6 +135,27 @@ main::-webkit-scrollbar {
         -webkit-text-fill-color     : transparent;
         -moz-background-clip        : text;
         -moz-text-fill-color        : transparent;
+    }
+
+    #attention_pointer {
+        position  : absolute;
+        z-index   : 2;
+        width     : 1.5rem;
+        right     : -1vw;
+        transition: all 1s;
+
+        @media (max-width: 1200px) {
+            right: -4vw;
+        }
+
+        @media (max-width: 600px) {
+            right: -6vw;
+            width: 1rem;
+        }
+
+        #pointer {
+            fill: $yellow;
+        }
     }
 }
 
@@ -297,8 +311,6 @@ main::-webkit-scrollbar {
         }
     }
 }
-
-
 
 .logo {
     position                    : absolute;

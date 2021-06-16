@@ -2,7 +2,6 @@
 
 import './sass/style.scss'
 
-
 console.log('Js runninz');
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(TextPlugin);
@@ -13,6 +12,7 @@ function init() {
   animateName();
   animateLogos();
   animateScrollArrow();
+  animateAttentionArrow()
   createScrollAnimations();
   txtAnimate();
 };
@@ -24,8 +24,6 @@ function animateScrollArrow() {
   console.log(plScroll)
   scrollContainer.addEventListener('scroll', cont => {
     if (cont.target.scrollTop > 200) {
-      //console.log(cont.target.scrollTop);
-
       plScroll.classList.add('fade');
     } else {
       console.log('else triggered!')
@@ -34,7 +32,11 @@ function animateScrollArrow() {
   });
 
   gsap.to('#please_scroll', { duration: 1, yoyo: true, repeat: -1, ease: 'power1.inOut', y: '1vh' });
+}
 
+function animateAttentionArrow() {
+  gsap.set('#attention_pointer', { rotation: 90 });
+  gsap.to('#attention_pointer', { duration: 1, yoyo: true, repeat: -1, ease: 'power1.inOut', x: '1vh' });
 }
 
 function txtAnimate() {
@@ -45,12 +47,15 @@ function txtAnimate() {
     }
   })
 
-  const nameObj = document.querySelector('#name');
+  const nameObj = document.querySelector('.name_part');
+  const attentionArrow = document.querySelector('#attention_pointer');
   nameObj.addEventListener('mouseenter', () => {
     txtChange.play();
+    attentionArrow.classList.add('fade');
   });
   nameObj.addEventListener('mouseleave', () => {
     const plBack = txtChange.reverse();
+    attentionArrow.classList.remove('fade');
   });
 
 }
