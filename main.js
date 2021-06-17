@@ -13,7 +13,6 @@ function init() {
   animateLogos();
   animateScrollArrow();
   animateAttentionArrow()
-  createScrollAnimations();
   txtAnimate();
 };
 
@@ -36,7 +35,7 @@ function animateScrollArrow() {
 
 function animateAttentionArrow() {
   gsap.set('#attention_pointer', { rotation: 90 });
-  gsap.to('#attention_pointer', { duration: 1, yoyo: true, repeat: -1, ease: 'power1.inOut', x: '1vh' });
+  gsap.to('#attention_pointer', { duration: 0.5, yoyo: true, repeat: -1, ease: 'power1.inOut', x: '3rem' });
 }
 
 function txtAnimate() {
@@ -75,7 +74,8 @@ function animateLogos() {
     figma: { zMod: 0, skillLvl: 3 },
     affinity: { zMod: 0, skillLvl: 3 },
     react: { zMod: 0, skillLvl: 6 },
-    sass: { zMod: 0, skillLvl: 4 }
+    sass: { zMod: 0, skillLvl: 4 },
+    wp: { zMod: 0, skillLvl: 3 }
   }
 
   const htmlLogo = document.querySelector('.html');
@@ -88,6 +88,7 @@ function animateLogos() {
   const reactLogo = document.querySelector('.react');
   const figmaLogo = document.querySelector('.figma');
   const sassLogo = document.querySelector('.sass');
+  const wpLogo = document.querySelector('.wp');
 
   const getPosition = () => {
     const randomTimeScale = Math.floor(Math.random() * (8 - 1) + 1);
@@ -106,6 +107,7 @@ function animateLogos() {
     .add(logoPath(reactLogo).timeScale((Math.random() * (0.7 - 0.4) + 0.4).toFixed(1)), Math.floor(Math.random() * (8 - 1) + 1) * -1)
     .add(logoPath(sassLogo).timeScale((Math.random() * (0.7 - 0.4) + 0.4).toFixed(1)), Math.floor(Math.random() * (8 - 1) + 1) * -1)
     .add(logoPath(figmaLogo).timeScale((Math.random() * (0.7 - 0.4) + 0.4).toFixed(1)), Math.floor(Math.random() * (8 - 1) + 1) * -1)
+    .add(logoPath(wpLogo).timeScale((Math.random() * (0.7 - 0.4) + 0.4).toFixed(1)), Math.floor(Math.random() * (8 - 1) + 1) * -1)
 
   function logoPath(logo) { // Set randomized timeline for each logo
     const tool = logo.dataset.name;
@@ -139,30 +141,6 @@ function animateLogos() {
 
 }
 
-function createScrollAnimations() {
-
-}
-
-
-
-
-// LOGO ANIMATIONS
-
-
-
-
-
-window.addEventListener('resize', resetZOffset);
-
-function resetZOffset() {
-  const zOffsetNew = "-" + Math.floor(window.innerWidth / 3) + "vw";
-  //console.log(`New calculation: ${zOffsetNew}`)
-}
-
-
-
-
-
 // Animate project image and text:
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -192,17 +170,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const fadeAnim = gsap.timeline();
 
-    fadeAnim.fromTo(obj, { rotationY: fadeInDir, scale: 0.4 }, { ease: 'power1.out', duration: 1, rotationY: 0, scale: 1 })
-    fadeAnim.fromTo(obj, {}, { duration: 0.6, opacity: 1 }, 0.4)
-    fadeAnim.fromTo(obj, { rotationY: 0, scale: 1 }, { ease: 'power1.in', duration: 1, rotationY: fadeOutDir, scale: 0.4 }),
-      fadeAnim.fromTo(obj, {}, { duration: 0.5, opacity: 0 }, 1.2);
+    fadeAnim.fromTo(obj, { rotationY: fadeInDir, scale: 0.4 }, { ease: 'power1.out', duration: 0.8, rotationY: 0, scale: 1 })
+    fadeAnim.fromTo(obj, { opacity: 0 }, { duration: 0.8, opacity: 1 }, 0)
+    // fadeAnim.fromTo(obj, { rotationY: 0, scale: 1 }, { ease: 'power1.in', duration: 1, rotationY: fadeOutDir, scale: 0.4 }),
+    //   fadeAnim.fromTo(obj, {}, { duration: 0.5, opacity: 0 }, 1.2);
 
     ScrollTrigger.create({
       scroller: 'main',
       trigger: grandParentElem,
       start: 'top bottom',
       //markers: true,
-      scrub: true,
+      //scrub: true,
       animation: fadeAnim,
       toggleActions: 'restart complete restart none'
     });

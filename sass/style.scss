@@ -39,9 +39,6 @@ html {
     font-size: 100%;
 }
 
-html,
-body {}
-
 a {
     text-decoration: none;
 }
@@ -60,7 +57,7 @@ main {
     overflow-x             : hidden;
     //transition           : background 4s;
     overscroll-behavior    : none;
-    scroll-snap-type       : y proximity;
+    scroll-snap-type       : y mandatory;
     /* Internet Explorer 10+ */
     -ms-overflow-style     : none;
     /* Firefox */
@@ -262,7 +259,6 @@ main::-webkit-scrollbar {
     }
 
     .pr_text .text_container {
-
         h2 {
             font                   : $headline;
             background             : linear-gradient(90deg, rgba(255, 255, 5, 1) 9%, rgba(144, 7, 240, 1) 35%, rgba(0, 41, 253, 1) 45%);
@@ -297,6 +293,10 @@ main::-webkit-scrollbar {
 
             a {
                 margin-right: 2rem;
+
+                :hover {
+                    color: $yellow;
+                }
             }
 
             i {
@@ -352,8 +352,6 @@ main::-webkit-scrollbar {
         top        : 5vw;
     }
 }
-
-
 
 .logo {
     position                    : absolute;
