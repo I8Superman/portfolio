@@ -19,7 +19,6 @@ function init() {
 function animateScrollArrow() {
   const plScroll = document.querySelector('#please_scroll');
   const scrollContainer = document.querySelector('main');
-  console.log(plScroll)
   scrollContainer.addEventListener('scroll', cont => {
     if (cont.target.scrollTop > 200) {
       plScroll.classList.add('fade');
