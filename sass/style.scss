@@ -182,11 +182,11 @@ main::-webkit-scrollbar {
     transition       : all 0.5s;
 
     h5 {
-        font         : $headline;
-        color        : $blue;
-        font-size    : 1rem;
-        margin-bottom: 2vh;
-        text-align   : center;
+        font           : $paragraph;
+        color          : $blue;
+        //font-size    : 1rem;
+        margin-bottom  : 2vh;
+        text-align     : center;
     }
 
     #scroll_pointer {
@@ -293,10 +293,7 @@ main::-webkit-scrollbar {
 
             a {
                 margin-right: 2rem;
-
-                :hover {
-                    color: $yellow;
-                }
+                transition  : all 0.5s;
             }
 
             i {
@@ -317,6 +314,11 @@ main::-webkit-scrollbar {
             }
         }
     }
+}
+
+.code:hover,
+.website:hover {
+    transform: scale(120%);
 }
 
 .contact {
