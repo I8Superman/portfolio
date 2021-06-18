@@ -2,7 +2,6 @@
 
 import './sass/style.scss'
 
-console.log('Js runninz');
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(TextPlugin);
 
@@ -25,7 +24,6 @@ function animateScrollArrow() {
     if (cont.target.scrollTop > 200) {
       plScroll.classList.add('fade');
     } else {
-      console.log('else triggered!')
       plScroll.classList.remove('fade');
     }
   });
