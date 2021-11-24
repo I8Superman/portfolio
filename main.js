@@ -39,7 +39,7 @@ function txtAnimate() {
   const txtChange = gsap.timeline({ paused: true });
   txtChange.to('.name_part', {
     duration: 1, fontSize: '2.5rem', lineHeight: '110%', fontWeight: '700', text: {
-      value: "Hi there!<br>I'm a 3rd sem Multimedia Design student looking for an internship to get a taste of real life Fronted Development and sharpen my coding and design skills"
+      value: "Hi there!<br>I'm a 4th semester Multimedia design student looking for a part time job / internship / trainee position where I can sharpen my coding skills"
     }
   })
 
