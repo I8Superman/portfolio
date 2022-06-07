@@ -35,29 +35,29 @@ function animateAttentionArrow() {
   gsap.to('#attention_pointer', { duration: 0.5, yoyo: true, repeat: -1, ease: 'power1.inOut', x: '3rem' });
 }
 
-function txtAnimate() {
-  const txtChange = gsap.timeline({ paused: true });
-  txtChange.to('.name_part', {
-    duration: 1, fontSize: '2.5rem', lineHeight: '110%', fontWeight: '700', text: {
-      value: "Hi there!<br>I'm a 4th semester Multimedia design student looking for a part time job / internship / trainee position where I can sharpen my coding skills"
-    }
-  })
+// function txtAnimate() {
+//   const txtChange = gsap.timeline({ paused: true });
+//   txtChange.to('.name_part', {
+//     duration: 1, fontSize: '2.5rem', lineHeight: '110%', fontWeight: '700', text: {
+//       value: "Hi there!<br>I'm a 4th semester Multimedia design student looking for a part time job / internship / trainee position where I can sharpen my coding skills"
+//     }
+//   })
 
-  const nameObj = document.querySelector('.name_part');
-  const attentionArrow = document.querySelector('#attention_pointer');
-  nameObj.addEventListener('mouseenter', () => {
-    txtChange.play();
-    attentionArrow.classList.add('fade');
-  });
-  nameObj.addEventListener('mouseleave', () => {
-    const plBack = txtChange.reverse();
-    attentionArrow.classList.remove('fade');
-  });
+//   const nameObj = document.querySelector('.name_part');
+//   const attentionArrow = document.querySelector('#attention_pointer');
+//   nameObj.addEventListener('mouseenter', () => {
+//     txtChange.play();
+//     attentionArrow.classList.add('fade');
+//   });
+//   nameObj.addEventListener('mouseleave', () => {
+//     const plBack = txtChange.reverse();
+//     attentionArrow.classList.remove('fade');
+//   });
 
-}
+// }
 
 function animateName() {
-  gsap.to('#name', { duration: 4, x: 10, yoyo: true, repeat: -1, ease: 'power1.inOut', opacity: 1 })
+  gsap.to('.flip-box', { duration: 4, x: 20, yoyo: true, repeat: -1, ease: 'power1.inOut', opacity: 1 })
 }
 
 function animateLogos() {
