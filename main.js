@@ -57,7 +57,13 @@ function animateAttentionArrow() {
 // }
 
 function animateName() {
-  gsap.to('.flip-box', { duration: 4, x: 20, yoyo: true, repeat: -1, ease: 'power1.inOut', opacity: 1 })
+  // gsap.set('.flip-box', { transformOrigin: 'center center' });
+  let namePath = gsap.timeline();
+  // namePath.set('.flip-box', { x: -10 })
+  namePath.to('.flip-box', { duration: 3, x: 10, ease: "power1.inOut", repeat: -1, yoyo: true, opacity: 1 })
+  // namePath.to('.flip-box', { duration: 4, x: -20, opacity: 1 })
+  // namePath.to('.flip-box', { duration: 2, x: 10, opacity: 1 })
+  // .to('.flip-box', { duration: 2, x: -10, yoyo: true, opacity: 1 })
 }
 
 function animateLogos() {
