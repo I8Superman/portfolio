@@ -32,7 +32,7 @@ function animateScrollArrow() {
 
 function animateAttentionArrow() {
   gsap.set('#attention_pointer', { rotation: 90 });
-  gsap.to('#attention_pointer', { duration: 0.5, yoyo: true, repeat: -1, ease: 'power1.inOut', x: '3rem' });
+  gsap.to('#attention_pointer', { duration: 0.5, yoyo: true, repeat: -1, ease: 'power1.inOut', x: '-5rem' });
 }
 
 // function txtAnimate() {
