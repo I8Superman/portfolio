@@ -12,7 +12,7 @@ function init() {
   animateLogos();
   animateScrollArrow();
   animateAttentionArrow()
-  txtAnimate();
+  // txtAnimate();
 };
 
 // Hide scroll arrow when scrolling down
@@ -68,17 +68,17 @@ function animateName() {
 
 function animateLogos() {
   const toolValues = {
-    css: { zMod: 0, skillLvl: 5 },
+    css: { zMod: 0, skillLvl: 6 },
     html: { zMod: 0, skillLvl: 6 },
     js: { zMod: 0, skillLvl: 6 },
     ai: { zMod: 0, skillLvl: 3 },
-    ps: { zMod: 0, skillLvl: 5 },
-    xd: { zMod: 0, skillLvl: 4 },
+    ps: { zMod: 0, skillLvl: 3 },
     figma: { zMod: 0, skillLvl: 3 },
     affinity: { zMod: 0, skillLvl: 3 },
-    react: { zMod: 0, skillLvl: 6 },
+    react: { zMod: 0, skillLvl: 4 },
     sass: { zMod: 0, skillLvl: 4 },
-    wp: { zMod: 0, skillLvl: 3 }
+    wp: { zMod: 0, skillLvl: 3 },
+    vue: { zMod: 0, skillLvl: 5 }
   }
 
   const htmlLogo = document.querySelector('.html');
@@ -86,12 +86,12 @@ function animateLogos() {
   const jsLogo = document.querySelector('.js');
   const psLogo = document.querySelector('.ps');
   const aiLogo = document.querySelector('.ai');
-  const xdLogo = document.querySelector('.xd');
   const affinityLogo = document.querySelector('.affinity');
   const reactLogo = document.querySelector('.react');
   const figmaLogo = document.querySelector('.figma');
   const sassLogo = document.querySelector('.sass');
   const wpLogo = document.querySelector('.wp');
+  const vueLogo = document.querySelector('.vue');
 
   const getPosition = () => {
     const randomTimeScale = Math.floor(Math.random() * (8 - 1) + 1);
@@ -105,7 +105,7 @@ function animateLogos() {
     .add(logoPath(jsLogo).timeScale((Math.random() * (0.7 - 0.4) + 0.4).toFixed(1)), Math.floor(Math.random() * (8 - 1) + 1) * -1)
     .add(logoPath(psLogo).timeScale((Math.random() * (0.7 - 0.4) + 0.4).toFixed(1)), Math.floor(Math.random() * (8 - 1) + 1) * -1)
     .add(logoPath(aiLogo).timeScale((Math.random() * (0.7 - 0.4) + 0.4).toFixed(1)), Math.floor(Math.random() * (8 - 1) + 1) * -1)
-    .add(logoPath(xdLogo).timeScale((Math.random() * (0.7 - 0.4) + 0.4).toFixed(1)), Math.floor(Math.random() * (8 - 1) + 1) * -1)
+    .add(logoPath(vueLogo).timeScale((Math.random() * (0.7 - 0.4) + 0.4).toFixed(1)), Math.floor(Math.random() * (8 - 1) + 1) * -1)
     .add(logoPath(affinityLogo).timeScale((Math.random() * (0.7 - 0.4) + 0.4).toFixed(1)), Math.floor(Math.random() * (8 - 1) + 1) * -1)
     .add(logoPath(reactLogo).timeScale((Math.random() * (0.7 - 0.4) + 0.4).toFixed(1)), Math.floor(Math.random() * (8 - 1) + 1) * -1)
     .add(logoPath(sassLogo).timeScale((Math.random() * (0.7 - 0.4) + 0.4).toFixed(1)), Math.floor(Math.random() * (8 - 1) + 1) * -1)
